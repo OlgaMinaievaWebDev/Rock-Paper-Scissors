@@ -23,7 +23,7 @@ if (player === "rock" || player === "paper" || player === "scissors") {
   alert("You did not enter correct");
 }
 
-function getResult() {
+function playRound() {
   if (computerChoice === player) {
     console.log("It is a Draw");
   }
@@ -46,4 +46,4 @@ function getResult() {
     console.log("You Lost");
   }
 }
-getResult();
+playRound();
