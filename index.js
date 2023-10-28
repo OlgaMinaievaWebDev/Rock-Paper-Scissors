@@ -19,6 +19,7 @@ function populateButtons() {
     buttonPlayerPick.textContent = choices[i];
     buttonPlayerPick.id = choices[i];
     playerPickArea.append(buttonPlayerPick);
+
     buttonPlayerPick.addEventListener("click", function (e) {
       playerChoice = e.target.id;
       const playerHand = document.querySelector(".player-hand");
@@ -36,6 +37,7 @@ function populateButtons() {
           break;
       }
       generateComputerChoice();
+      generateResult();
     });
   }
 }
@@ -46,6 +48,9 @@ const generateComputerChoice = () => {
   let randNum = Math.floor(Math.random() * choices.length);
   computerChoice = randNum;
   const computerHand = document.querySelector(".computer-hand");
+  console.log(choices[computerChoice]);
+  console.log(playerChoice);
+  console.log(playerChoice + choices[computerChoice]);
   switch (choices[computerChoice]) {
     case "rock":
       computerHand.innerHTML = `<i class="fa-regular fa-hand-back-fist"></i>`;
@@ -61,6 +66,29 @@ const generateComputerChoice = () => {
   }
 };
 
+// generate result and find the Winner
+const generateResult = () => {
+  const resultEl = document.getElementById("result");
+  switch (playerChoice + choices[computerChoice]) {
+    case "scissorsscissors":
+    case "paperpaper":
+    case "rockrock":
+      resultEl.textContent = `It is a draw`;
+      break;
+    case "scissorspaper":
+    case "paperrock":
+    case "rockscissors":
+      resultEl.textContent = "You won";
+      break;
+    case "paperscissors":
+    case "rockpaper":
+   case "scissorsrock":
+   resultEl.textContent = "You lost";
+    default:
+      break;
+  }
+};
+
 // const gameGrid = document.getElementById("game");
 // gameGrid.append(
 //   userChoiceDisplay,
@@ -69,53 +97,8 @@ const generateComputerChoice = () => {
 //   finalResult
 // );
 
-// const choices = ["rock", "paper", "scissors"];
-// let playerSelection;
-// let computerChoice;
 
-// const playRound = (e) => {
-//   playerSelection = e.target.id;
-//   userChoiceDisplay.textContent = `you: ${playerSelection}`;
-//   generateComputerChoice();
-//   generateResult();
-// };
 
-// const generateComputerChoice = () => {
-//   const randomChoice = choices[Math.floor(Math.random() * choices.length)];
-//   computerChoice = randomChoice;
-//   computerChoiceDisplay.textContent = `computer: ${computerChoice}`;
-// };
-
-// const generateResult = () => {
-//   switch (playerSelection + computerChoice) {
-//     case "scissorsscissors":
-//     case "paperpaper":
-//     case "rockrock":
-//       resultDisplay.textContent = "Its a Draw 😎";
-//       draw(playerSelection, computerChoice);
-//       break;
-//     case "scissorspaper":
-//     case "paperrock":
-//     case "rockscissors":
-//       resultDisplay.textContent = "You won 🤩";
-//       win(playerSelection, computerChoice);
-//       break;
-//     case "paperscissors":
-//     case "rockpaper":
-//     case "scissorsrock":
-//       resultDisplay.textContent = "You lost 😩";
-//       loose(playerSelection, computerChoice);
-//       break;
-//   }
-// };
-
-// for (let i = 0; i < choices.length; i++) {
-//   const button = document.createElement("button");
-//   button.id = choices[i];
-//   button.textContent = choices[i];
-//   button.addEventListener("click", playRound);
-//   gameGrid.appendChild(button);
-// }
 
 // let playerScore = 0;
 // let computerScore = 0;
