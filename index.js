@@ -1,5 +1,6 @@
 const startBtn = document.querySelector("button");
 const startGame = document.querySelector(".start-game");
+const resultEl = document.getElementById("result");
 
 // start page fades out
 startBtn.addEventListener("click", () => {
@@ -12,6 +13,10 @@ const playerPickArea = document.querySelector(".player-choice");
 const choices = ["rock", "paper", "scissors"];
 let playerChoice;
 let computerChoice;
+
+let playerScore = 0;
+let computerScore = 0;
+let roundsPlayed = 0;
 
 function populateButtons() {
   for (let i = 0; i < choices.length; i++) {
@@ -68,41 +73,44 @@ const generateComputerChoice = () => {
 
 // generate result and find the Winner
 const generateResult = () => {
-  const resultEl = document.getElementById("result");
+  
   switch (playerChoice + choices[computerChoice]) {
     case "scissorsscissors":
     case "paperpaper":
     case "rockrock":
-      resultEl.textContent = `It is a draw`;
+      //resultEl.textContent = `It is a draw`;
       break;
     case "scissorspaper":
     case "paperrock":
     case "rockscissors":
-      resultEl.textContent = "You won";
+      //resultEl.textContent = "You won";
+      win();
       break;
     case "paperscissors":
     case "rockpaper":
-   case "scissorsrock":
-   resultEl.textContent = "You lost";
+    case "scissorsrock":
+      //resultEl.textContent = "You lost";
+      lost();
     default:
       break;
   }
 };
 
-// const gameGrid = document.getElementById("game");
-// gameGrid.append(
-//   userChoiceDisplay,
-//   computerChoiceDisplay,
-//   resultDisplay,
-//   finalResult
-// );
+function win() {
+  playerScore++;
+  if (playerScore === 5) {
+    resultEl.textContent = "Game over";
+  } else {
+  }
+}
 
-
-
-
-// let playerScore = 0;
-// let computerScore = 0;
-// let roundsPlayed = 0;
+function lost() {
+  computerScore++;
+  if (computerScore === 5) {
+    resultEl.textContent = "Looser";
+  } else {
+  }
+}
 
 // function win(player, computer) {
 //   playerScore++;
@@ -110,17 +118,6 @@ const generateResult = () => {
 //     finalResult.textContent = `${computerScore} ${playerScore}`;
 //   } else if (playerScore === 5) {
 //     finalResult.textContent = "You won";
-//     endGame();
-//   }
-// }
-
-// function loose(player, computer) {
-//   computerScore++;
-//   finalResult.textContent = `You lost`;
-//   if (computerScore < 5) {
-//     finalResult.textContent = `${computerScore} ${playerScore}`;
-//   } else if (computerScore === 5) {
-//     finalResult.textContent = `You lost`;
 //     endGame();
 //   }
 // }
@@ -133,3 +130,11 @@ const generateResult = () => {
 //   playerScore = 0;
 //   computerScore = 0;
 // }
+
+// const gameGrid = document.getElementById("game");
+// gameGrid.append(
+//   userChoiceDisplay,
+//   computerChoiceDisplay,
+//   resultDisplay,
+//   finalResult
+// );
