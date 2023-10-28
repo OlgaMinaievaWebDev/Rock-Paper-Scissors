@@ -1,15 +1,66 @@
 const startBtn = document.querySelector("button");
 const startGame = document.querySelector(".start-game");
 
+// start page fades out
 startBtn.addEventListener("click", () => {
   console.log("clicked");
   startGame.classList.add("fadeIn");
 });
 
-// const userChoiceDisplay = document.createElement("h1");
-// const computerChoiceDisplay = document.createElement("h1");
-// const resultDisplay = document.createElement("h1");
-// const finalResult = document.createElement("h1");
+// populating buttons for player
+const playerPickArea = document.querySelector(".player-choice");
+const choices = ["rock", "paper", "scissors"];
+let playerChoice;
+let computerChoice;
+
+function populateButtons() {
+  for (let i = 0; i < choices.length; i++) {
+    const buttonPlayerPick = document.createElement("button");
+    buttonPlayerPick.textContent = choices[i];
+    buttonPlayerPick.id = choices[i];
+    playerPickArea.append(buttonPlayerPick);
+    buttonPlayerPick.addEventListener("click", function (e) {
+      playerChoice = e.target.id;
+      const playerHand = document.querySelector(".player-hand");
+      switch (playerChoice) {
+        case "rock":
+          playerHand.innerHTML = `<i class="fa-regular fa-hand-back-fist"></i>`;
+          break;
+        case "paper":
+          playerHand.innerHTML = `<i class="fa-regular fa-hand"></i>`;
+          break;
+        case "scissors":
+          playerHand.innerHTML = `<i class="fa-regular fa-hand-scissors"></i>`;
+          break;
+        default:
+          break;
+      }
+      generateComputerChoice();
+    });
+  }
+}
+populateButtons();
+
+// Computer options function
+const generateComputerChoice = () => {
+  let randNum = Math.floor(Math.random() * choices.length);
+  computerChoice = randNum;
+  const computerHand = document.querySelector(".computer-hand");
+  switch (choices[computerChoice]) {
+    case "rock":
+      computerHand.innerHTML = `<i class="fa-regular fa-hand-back-fist"></i>`;
+      break;
+    case "paper":
+      computerHand.innerHTML = `<i class="fa-regular fa-hand"></i>`;
+      break;
+    case "scissors":
+      computerHand.innerHTML = `<i class="fa-regular fa-hand-scissors"></i>`;
+      break;
+    default:
+      break;
+  }
+};
+
 // const gameGrid = document.getElementById("game");
 // gameGrid.append(
 //   userChoiceDisplay,
