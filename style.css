@@ -119,10 +119,14 @@ h2 {
 }
 
 @media only screen and (max-width: 768px) {
-  .player-choice buttons {
-    align-items: center;
+  .player-choice {
+   display: flex;
+   flex-direction: column;
   }
   .player-choice {
     width: 90%;
+  }
+  .game {
+    max-width: 90%;
   }
 }
