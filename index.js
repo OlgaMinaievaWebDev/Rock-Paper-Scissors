@@ -53,9 +53,7 @@ const generateComputerChoice = () => {
   let randNum = Math.floor(Math.random() * choices.length);
   computerChoice = randNum;
   const computerHand = document.querySelector(".computer-hand");
-  console.log(choices[computerChoice]);
-  console.log(playerChoice);
-  console.log(playerChoice + choices[computerChoice]);
+
   switch (choices[computerChoice]) {
     case "rock":
       computerHand.innerHTML = `<i class="fa-regular fa-hand-back-fist"></i>`;
@@ -73,7 +71,6 @@ const generateComputerChoice = () => {
 
 // generate result and find the Winner
 const generateResult = () => {
-  
   switch (playerChoice + choices[computerChoice]) {
     case "scissorsscissors":
     case "paperpaper":
@@ -96,19 +93,28 @@ const generateResult = () => {
   }
 };
 
+const displayPlayerScore = document.getElementById("player");
+const displayComputerScore = document.getElementById("computer");
+
 function win() {
   playerScore++;
+  roundsPlayed++;
   if (playerScore === 5) {
     resultEl.textContent = "Game over";
   } else {
+    displayPlayerScore.textContent = playerScore;
+    resultEl.textContent = `Round ${roundsPlayed}`;
   }
 }
 
 function lost() {
   computerScore++;
+  roundsPlayed++;
   if (computerScore === 5) {
     resultEl.textContent = "Looser";
   } else {
+    displayComputerScore.textContent = computerScore;
+    resultEl.textContent = `Round ${roundsPlayed}`;
   }
 }
 
