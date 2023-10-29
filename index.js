@@ -1,11 +1,13 @@
-const startBtn = document.querySelector("button");
-const startGame = document.querySelector(".start-game");
 const resultEl = document.getElementById("result");
-
+const board = document.querySelector(".game");
+const gameOverEl = document.querySelector(".reset");
+const start = document.querySelector(".start-game");
 // start page fades out
-startBtn.addEventListener("click", () => {
-  console.log("clicked");
-  startGame.classList.add("fadeIn");
+
+document.querySelector(".myButton").addEventListener("click", function (event) {
+  console.log("hey");
+  start.classList.add("fadeOut");
+  board.classList.add("fadeIn");
 });
 
 // populating buttons for player
@@ -75,7 +77,7 @@ const generateResult = () => {
     case "scissorsscissors":
     case "paperpaper":
     case "rockrock":
-      //resultEl.textContent = `It is a draw`;
+      tie();
       break;
     case "scissorspaper":
     case "paperrock":
@@ -99,43 +101,43 @@ const displayComputerScore = document.getElementById("computer");
 function win() {
   playerScore++;
   roundsPlayed++;
-  if (playerScore === 5) {
-    resultEl.textContent = "Game over";
-  } else {
+  if (playerScore < 5) {
     displayPlayerScore.textContent = playerScore;
     resultEl.textContent = `Round ${roundsPlayed}`;
+  } else if (playerScore === 5) {
+    resultEl.textContent = "You are the Winner";
+    gameOver();
   }
 }
 
 function lost() {
   computerScore++;
   roundsPlayed++;
-  if (computerScore === 5) {
-    resultEl.textContent = "Looser";
-  } else {
+  if (computerScore < 5) {
     displayComputerScore.textContent = computerScore;
     resultEl.textContent = `Round ${roundsPlayed}`;
+  } else if (computerScore === 5) {
+    resultEl.textContent = "You lost this one";
+    gameOver();
   }
 }
 
-// function win(player, computer) {
-//   playerScore++;
-//   if (playerScore < 5) {
-//     finalResult.textContent = `${computerScore} ${playerScore}`;
-//   } else if (playerScore === 5) {
-//     finalResult.textContent = "You won";
-//     endGame();
-//   }
-// }
+function tie() {
+  roundsPlayed++;
+  if (playerScore === computerScore) {
+    resultEl.textContent = "It is a draw";
+    gameOver();
+  }
+}
 
-// function draw(player, computer) {
-//   finalResult.textContent = `It is a tie`;
-// }
-
-// function endGame() {
-//   playerScore = 0;
-//   computerScore = 0;
-// }
+function gameOver() {
+  playerScore = 0;
+  computerScore = 0;
+  roundsPlayed = 0;
+  displayComputerScore.textContent = 0;
+  displayPlayerScore.textContent = 0;
+  gameOverEl.classList.add("fadeOut");
+}
 
 // const gameGrid = document.getElementById("game");
 // gameGrid.append(

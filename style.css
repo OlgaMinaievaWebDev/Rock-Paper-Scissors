@@ -17,8 +17,10 @@
   background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
 }
 
-.start-game h1 {
-  margin-bottom: 30px;
+h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #898d7d;
 }
 
 /* Start the Game Button style*/
@@ -54,11 +56,12 @@ h2 {
 
 /* Fading start page */
 .fadeIn {
-  opacity: 0;
+  opacity: 1;
+  z-index: 1;
 }
 
-.FadeOut {
-  opacity: 1;
+.fadeOut {
+  opacity: 0;
 }
 
 /* Game Layout Styling */
@@ -115,6 +118,11 @@ h2 {
   gap: 3rem;
 }
 
-.reset {
-  margin: 10px auto;
+@media only screen and (max-width: 768px) {
+  .player-choice buttons {
+    align-items: center;
+  }
+  .player-choice {
+    width: 90%;
+  }
 }
