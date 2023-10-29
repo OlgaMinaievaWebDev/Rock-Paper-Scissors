@@ -4,11 +4,12 @@ const gameOverEl = document.querySelector(".reset");
 const start = document.querySelector(".start-game");
 // start page fades out
 
-document.querySelector(".myButton").addEventListener("click", function (event) {
-  console.log("hey");
-  start.classList.add("fadeOut");
-  board.classList.add("fadeIn");
-});
+// document.querySelector(".myButton").addEventListener("click", function () {
+//   console.log("hey");
+//   start.classList.remove("active");
+//   board.classList.add("active");
+//   gameOverEl.classList.add("active");
+// });
 
 // populating buttons for player
 const playerPickArea = document.querySelector(".player-choice");
@@ -136,7 +137,6 @@ function gameOver() {
   roundsPlayed = 0;
   displayComputerScore.textContent = 0;
   displayPlayerScore.textContent = 0;
-  gameOverEl.classList.add("fadeOut");
 }
 
 // const gameGrid = document.getElementById("game");
@@ -146,3 +146,12 @@ function gameOver() {
 //   resultDisplay,
 //   finalResult
 // );
+let display = 0;
+function displayOnOff() {
+  let div = document.querySelector(".display");
+  if (div.computedStyleMap.display === "none") {
+    div.computedStyleMap.display = "block";
+  } else {
+    div.computedStyleMap.display = "none";
+  }
+}

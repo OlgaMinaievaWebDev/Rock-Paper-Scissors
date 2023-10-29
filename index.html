@@ -11,11 +11,11 @@
     <title>Rock Paper Scissors</title>
   </head>
   <body>
-    <div class="start-game fadeIn">
+    <div class="start-game display">
       <h1>Paper Rock Scissors</h1>
-     <a href="#" class="myButton">Start Game</a>
+      <button onclick="displayOnOff()">Start Game</button>
     </div>
-    <div class="game">
+    <div class="game display">
       <div class="container">
         <div class="results">
           <h2 id="result">Make your choice</h2>
@@ -40,7 +40,7 @@
           </div>
         </div>
         <div class="player-choice"></div>
-        <div class="reset fadeOut">
+        <div class="reset inactive">
           <button id="reset">Play Again</button>
         </div>
       </div>

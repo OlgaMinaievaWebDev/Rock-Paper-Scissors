@@ -15,6 +15,7 @@
   width: 100vw;
   color: #3a8a9e;
   background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+  display: none;
 }
 
 h1 {
@@ -54,21 +55,9 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* Fading start page */
-.fadeIn {
-  opacity: 1;
-  z-index: 1;
-}
-
-.fadeOut {
-  opacity: 0;
-}
-
 /* Game Layout Styling */
 .game {
-  position: absolute;
-  top: 0;
-  left: 0;
+
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -117,11 +106,18 @@ h2 {
   align-items: center;
   gap: 3rem;
 }
+.reset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  display: none;
+}
 
 @media only screen and (max-width: 768px) {
   .player-choice {
-   display: flex;
-   flex-direction: column;
+    display: flex;
+    flex-direction: column;
   }
   .player-choice {
     width: 90%;
