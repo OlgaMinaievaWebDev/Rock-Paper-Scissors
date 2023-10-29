@@ -119,10 +119,5 @@ h2 {
     display: flex;
     flex-direction: column;
   }
-  .player-choice {
-    width: 90%;
-  }
-  .game {
-    max-width: 90%;
-  }
+ 
 }
