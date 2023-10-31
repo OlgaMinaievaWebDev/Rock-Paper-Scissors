@@ -106,7 +106,7 @@ function win() {
     displayPlayerScore.textContent = playerScore;
     resultEl.textContent = `Round ${roundsPlayed}`;
   } else if (playerScore === 5) {
-    resultEl.textContent = "You are the Winner";
+    resultEl.textContent = "You are the Winner!!! Play again!";
     gameOver();
   }
 }
@@ -118,15 +118,15 @@ function lost() {
     displayComputerScore.textContent = computerScore;
     resultEl.textContent = `Round ${roundsPlayed}`;
   } else if (computerScore === 5) {
-    resultEl.textContent = "You lost this one";
+    resultEl.textContent = "You lost this one! Try again!";
     gameOver();
   }
 }
 
 function tie() {
   roundsPlayed++;
-  if (playerScore === computerScore) {
-    resultEl.textContent = "It is a draw";
+  if (playerScore === 5 && computerScore === 5) {
+    resultEl.textContent = "It is a draw! Try again!";
     gameOver();
   }
 }
@@ -137,21 +137,4 @@ function gameOver() {
   roundsPlayed = 0;
   displayComputerScore.textContent = 0;
   displayPlayerScore.textContent = 0;
-}
-
-// const gameGrid = document.getElementById("game");
-// gameGrid.append(
-//   userChoiceDisplay,
-//   computerChoiceDisplay,
-//   resultDisplay,
-//   finalResult
-// );
-let display = 0;
-function displayOnOff() {
-  let div = document.querySelector(".display");
-  if (div.computedStyleMap.display === "none") {
-    div.computedStyleMap.display = "block";
-  } else {
-    div.computedStyleMap.display = "none";
-  }
 }
